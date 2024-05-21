@@ -16,12 +16,10 @@ class HttpMethods(str, Enum):
 
 
 class HttpClient:
-
     def __init__(self, url):
         self.base_url = url
 
     def send_request(self, method: HttpMethods, endpoint: str, **kwargs):
-
         url = f"{self.base_url}{endpoint}"
 
         if kwargs:
