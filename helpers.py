@@ -25,6 +25,7 @@ def extract_dict_from_string(target) -> dict:
     match = re.search(r"\{.*?\}", target)
     if match:
         json_str = match.group(0)
+        json_str = json_str.replace("'", '"')
         try:
             parsed_dict = json.loads(json_str)
             return parsed_dict

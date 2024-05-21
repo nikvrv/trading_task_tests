@@ -20,7 +20,7 @@ def config():
     app_url = os.getenv("APP_URL")
     if not app_url:
         raise MisconfiguredEnvironment
-    return {"app_url": app_url}
+    return {"app_url": f"http://{app_url}", "ws": f"ws://{app_url}"}
 
 
 @pytest.fixture
@@ -48,8 +48,7 @@ def five_orders(http_client):
 
 @pytest_asyncio.fixture
 async def websocket_client(config):
-    url = "ws://127.0.0.1:8000/ws"
-    client = WebSocketClient(url)
+    client = WebSocketClient(f"{config['ws']}/ws")
     await client.connect()
     yield client
     await client.close()

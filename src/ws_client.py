@@ -1,5 +1,4 @@
 import asyncio
-import json
 from logging import getLogger
 import websockets
 
@@ -30,30 +29,6 @@ class WebSocketClient:
         except Exception as e:
             logger.error(f"WebSocket error during receive: {e}")
             self.keep_running = False
-
-    async def send_message(self, message):
-        try:
-            if isinstance(message, dict):
-                message = json.dumps(message)
-            await self.websocket.send(message)
-            logger.info(f"Message {message} has been sent")
-        except websockets.ConnectionClosed:
-            logger.error("Cannot send message, WebSocket connection is closed.")
-            self.keep_running = False
-        except Exception as e:
-            logger.error(f"WebSocket error during send: {e}")
-
-    async def get_messages(self) -> list:
-        messages = []
-        while not self.message_queue.empty():
-            messages.append(await self.message_queue.get())
-        return messages
-
-    async def wait_for_message(self, timeout=10):
-        try:
-            return await asyncio.wait_for(self.message_queue.get(), timeout)
-        except asyncio.TimeoutError:
-            return None
 
     async def wait_for_messages(self, count=1, timeout=10):
         messages = []
