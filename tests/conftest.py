@@ -57,7 +57,5 @@ async def websocket_client(config):
 
 @pytest.fixture
 def delete_order(http_client, new_order):
-    http_client.send_request(
-        HttpMethods.DELETE, f"/orders/{new_order['id']}"
-    )
+    http_client.send_request(HttpMethods.DELETE, f"/orders/{new_order['id']}")
     return new_order

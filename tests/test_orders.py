@@ -20,8 +20,8 @@ class TestPostOrders:
         assert response.status_code == 201, "Wrong status code"
         order = Order(**response.json())
 
-        assert order.stocks == data['stocks']
-        assert order.quantity == data['quantity']
+        assert order.stocks == data["stocks"]
+        assert order.quantity == data["quantity"]
         assert order.status == "pending"
 
     @allure.title("Create order invalid data")
@@ -104,8 +104,9 @@ class TestDeleteOrder:
 class TestBusinessLogic:
     @allure.title("Order status has been changed to executed")
     def test_order_execution(self, http_client, new_order):
-        time.sleep(6) # wait until order has been executed
-        response = http_client.send_request(HttpMethods.GET, f"/orders/{new_order['id']}")
+        time.sleep(6)  # wait until order has been executed
+        response = http_client.send_request(
+            HttpMethods.GET, f"/orders/{new_order['id']}"
+        )
         assert response.status_code == 200
-        assert response.json()['status'] == 'executed'
-
+        assert response.json()["status"] == "executed"

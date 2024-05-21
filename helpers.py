@@ -7,6 +7,7 @@ from logging import getLogger
 
 logger = getLogger(__name__)
 
+
 def get_stock_name() -> list[str]:
     stocks = ("EUR", "USD", "GEL", "AED")
     return choices(stocks, k=2)
