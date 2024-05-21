@@ -46,7 +46,7 @@ def five_orders(http_client):
     return results
 
 
-@pytest_asyncio.fixture(scope='session')
+@pytest_asyncio.fixture
 async def websocket_client(config):
     url = "ws://127.0.0.1:8000/ws"
     client = WebSocketClient(url)
