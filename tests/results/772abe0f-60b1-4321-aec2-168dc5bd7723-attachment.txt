@@ -1,0 +1,1 @@
+[14:54:18.596] - INFO -  Request HttpMethods.GET has been sent to http://127.0.0.1:8000/orders/2758. Requests data - None. Response status code - 404. Response - {"detail":"Order not found"}. Response headers - {'date': 'Tue, 21 May 2024 10:54:17 GMT', 'server': 'uvicorn', 'content-length': '28', 'content-type': 'application/json'}.

@@ -1,0 +1,1 @@
+[15:03:40.031] - INFO -  Request HttpMethods.DELETE has been sent to http://127.0.0.1:8000/orders/[]. Requests data - None. Response status code - 404. Response - {"detail":"Order not found"}. Response headers - {'date': 'Tue, 21 May 2024 11:03:38 GMT', 'server': 'uvicorn', 'content-length': '28', 'content-type': 'application/json'}.
